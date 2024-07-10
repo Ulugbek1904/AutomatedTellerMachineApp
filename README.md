@@ -48,7 +48,7 @@ Welcome to the Bankomat App! This application simulates an ATM system where user
     - Update your PIN code securely.
 
     ![Change PIN](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/changePin1.png?raw=true)
-    ![Change PIN]()
+    ![Change PIN](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/changePin2.png?raw=true)
    
 10. **Change Phone Number**:
     - Update the phone number linked to your account.
@@ -57,4 +57,4 @@ Welcome to the Bankomat App! This application simulates an ATM system where user
 
 11. **See your card acrivities**:
     - display history of card.
-    [Card activities](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/CardHistory.png?raw=true)
+    ![Card activities](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/CardHistory.png?raw=true)
