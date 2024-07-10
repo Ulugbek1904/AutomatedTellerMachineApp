@@ -20,7 +20,7 @@ Welcome to the Bankomat App! This application simulates an ATM system where user
 2. **Authenticate**:
     - Enter your PIN code. You have 3 attempts before the application waits for 1 minute. After 5 incorrect attempts, the card will be blocked.
 
-    ![Authentication](./images/authentication.gif)
+    ![Authentication](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/Authentication1.png?raw=true)
 
 3. **Main Menu**:
     - Choose from the following options:
