@@ -20,9 +20,10 @@ Welcome to the Bankomat App! This application simulates an ATM system where user
 2. **Authenticate**:
     - Enter your PIN code. You have 3 attempts before the application waits for 1 minute. After 5 incorrect attempts, the card will be blocked.
 
-    ![Authentication](./images/authentication.gif)
-
-3. **Main Menu**:
+    ![Authentication](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/Authentication1.png?raw=true)
+    ![Main Menu](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/Authentication2.png?raw=true)
+    ![Main Menu](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/Authentication3.png?raw=true)
+4. **Main Menu**:
     - Choose from the following options:
         1. Check balance
         2. Withdraw cash
@@ -30,24 +31,30 @@ Welcome to the Bankomat App! This application simulates an ATM system where user
         4. Card history
         5. Exit
 
-    ![Main Menu](./images/main_menu.png)
+    ![Main Menu](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/MainMenu.png?raw=true)
 
-4. **Check Balance**:
+5. **Check Balance**:
     - View your current balance.
 
-    ![Check Balance](./images/check_balance.png)
+    ![Check Balance](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/Balance.png?raw=true)
 
-5. **Withdraw Cash**:
+6. **Withdraw Cash**:
     - Select an amount to withdraw.
 
-    ![Withdraw Cash](./images/withdraw_cash.png)
-
-6. **Change PIN**:
+    ![Withdraw Cash](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/Withdraw1.png?raw=true)
+    ![Withdraw Cash](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/Withdraw2.png?raw=true)
+   
+8. **Change PIN**:
     - Update your PIN code securely.
 
-    ![Change PIN](./images/change_pin.gif)
-
-7. **Change Phone Number**:
+    ![Change PIN](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/changePin1.png?raw=true)
+    ![Change PIN](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/changePin2.png?raw=true)
+   
+10. **Change Phone Number**:
     - Update the phone number linked to your account.
 
-    ![Change Phone Number](./images/change_phone_number.gif)
+    ![Change Phone Number](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/changePhone.png?raw=true)
+
+11. **See your card acrivities**:
+    - display history of card.
+    ![Card activities](https://github.com/Ulugbek1904/AutomatedTellerMachineApp/blob/main/images/CardHistory.png?raw=true)
