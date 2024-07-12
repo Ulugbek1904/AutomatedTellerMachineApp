@@ -1,11 +1,15 @@
-﻿namespace AutomatedTellerMachineApp.Services
+﻿using AutomatedTellerMachineApp.GitAutomatedTellerMachineApp.Services;
+
+namespace AutomatedTellerMachineApp.Services
 {
     public class HomeService : IHomeService
     {
+        LogerService logerService;
         IMenuService menuService;
         public HomeService()
         {
             menuService = new MenuService();
+            logerService = new V1LoggerService();
         }
         public void LoadExistedMenus()
         {
@@ -20,10 +24,10 @@
                     "4. Card history\n" +
                     "5. Card Dispensing";
 
-                    Console.WriteLine("====== Menu ======\n");
-                    Console.WriteLine(menu);
+                    logerService.LogInformation("====== Menu ======\n");
+                    logerService.LogInformation(menu);
 
-                    Console.Write("\n\nChoose an option  ");
+                    logerService.LogInformation("\n\nChoose an option  ");
                     string userInput = Console.ReadLine();
                     int intInput = int.Parse(userInput);
 
@@ -51,7 +55,7 @@
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
-                    Console.WriteLine("\nTransaction successful. " +
+                    logerService.LogInformation("\nTransaction successful. " +
                         "Would you like to perform " +
                         "another transaction? y/n");
 
@@ -63,13 +67,14 @@
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    Console.WriteLine("\nEnter only 1 2 3 4 5 numbers!!! Try again");
-                    Console.WriteLine(Environment.NewLine);
+                    logerService.LogInformation("\n" +
+                        "Enter only 1 2 3 4 5 numbers!!! Try again\n");
+                    
                 }
                 catch (Exception exception)
                 {
-                    Console.WriteLine($"\n{exception.Message}. Try Again");
-                    Console.WriteLine(Environment.NewLine);
+                    logerService.LogInformation($"\n" +
+                        $"{exception.Message}. Try Again\n");
                 }            
             }
         }

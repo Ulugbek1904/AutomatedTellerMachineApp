@@ -1,19 +1,22 @@
-﻿using AutomatedTellerMachineApp.Models;
+﻿using AutomatedTellerMachineApp.GitAutomatedTellerMachineApp.Services;
+using AutomatedTellerMachineApp.Models;
 
 namespace AutomatedTellerMachineApp.Services
 {
     internal class MenuService : IMenuService
     {
+        LogerService logerService;
         ISettingsService settingsService;
         Account account;
         public MenuService()
         {
+            logerService = new V1LoggerService();
             account = new Account();
             settingsService = new SettingsService();
         }
         public void DisplayBalance()
-        {   
-            Console.WriteLine($"Your balance :" +
+        {
+            logerService.LogInformation($"Your balance :" +
                 $" {account.CurrentBalance}$");
         }
 
@@ -24,13 +27,13 @@ namespace AutomatedTellerMachineApp.Services
             {
                 try
                 {
-                    Console.WriteLine("\n1 => 10$".
+                    logerService.LogInformation("\n1 => 10$".
                         PadRight(40) + "2 => 20$");
-                    Console.WriteLine("3 => 50$".
+                    logerService.LogInformation("3 => 50$".
                         PadRight(40) + "4 => 100$");
-                    Console.WriteLine("5. Another amount.\n");
+                    logerService.LogInformation("5. Another amount.\n");
 
-                    Console.Write("Select one : ");
+                    logerService.LogInformation("Select one : ");
                     string userInput = Console.ReadLine();
                     int intUserInput = int.Parse(userInput);
 
@@ -50,7 +53,7 @@ namespace AutomatedTellerMachineApp.Services
                             amount = 100;
                             break;
                         case 5:
-                            Console.Write("Amount : ");
+                            logerService.LogInformation("Amount : ");
                             decimal amount2 = decimal.
                                 Parse(Console.ReadLine());
                             amount = amount2;
@@ -64,29 +67,29 @@ namespace AutomatedTellerMachineApp.Services
                         account.CurrentBalance -= (amount + amount/100);
                         account.TransferHistory.Add(amount + amount/100);
 
-                        Console.WriteLine($"total amount: " +
+                        logerService.LogInformation($"total amount: " +
                             $"{amount + amount/100}$\n" +
                             $"transaction fee : {amount/100}$");
 
-                        Console.WriteLine("press enter to confirm ");
+                        logerService.LogInformation("press enter to confirm ");
                         Console.ReadLine();
                         Thread.Sleep(500);
-                        Console.WriteLine("Get your cash");
+                        logerService.LogInformation("Get your cash");
                         Thread.Sleep(7000);
                         continueProgram = false;
                     } 
-                    else 
-                        Console.WriteLine("Incorrect amount entered or" +
+                    else
+                        logerService.LogInformation("Incorrect amount entered or" +
                             " insufficient balance available");
 
                 }
                 catch (ArgumentOutOfRangeException exp)
                 {
-                    Console.WriteLine($"{exp.Message} Try again");
+                    logerService.LogInformation($"{exp.Message} Try again");
                 }
                 catch(Exception exp)
                 {
-                    Console.WriteLine(exp.Message);
+                    logerService.LogInformation(exp.Message);
                 }
             }
 
@@ -96,23 +99,23 @@ namespace AutomatedTellerMachineApp.Services
         {
             if (account.TransferHistory.Count > 0)
             {
-                Console.WriteLine("History of withdrawals:");
+                logerService.LogInformation("History of withdrawals:");
                 foreach (var transfer in account.TransferHistory)
                 {
-                    Console.WriteLine($"- {transfer}$");
+                    logerService.LogInformation($"- {transfer}$");
                 }
             }
             else
             {
-                Console.WriteLine("the card has not been debited yet.");
+                logerService.LogInformation("the card has not been debited yet.");
             }
         }
 
         public void Settings()
         {
-            Console.WriteLine("1 => Change phone Number");
-            Console.WriteLine("2 => Change PIN code");
-            Console.Write("Your choice : ");
+            logerService.LogInformation("1 => Change phone Number");
+            logerService.LogInformation("2 => Change PIN code");
+            logerService.LogInformation("Your choice : ");
             try
             {
                 string userInput = Console.ReadLine();
@@ -134,11 +137,11 @@ namespace AutomatedTellerMachineApp.Services
             }
             catch(ArgumentOutOfRangeException ex)
             {
-                Console.WriteLine($"{ex.Message} Try again");
+                logerService.LogInformation($"{ex.Message} Try again");
             }
             catch(ArgumentException ex)
             {
-                Console.WriteLine($"{ex.Message} Try again");
+                logerService.LogInformation($"{ex.Message} Try again");
             }
         }
     }

@@ -1,12 +1,15 @@
-﻿using AutomatedTellerMachineApp.Models;
+﻿using AutomatedTellerMachineApp.GitAutomatedTellerMachineApp.Services;
+using AutomatedTellerMachineApp.Models;
 
 namespace AutomatedTellerMachineApp.Services
 {
     internal class SettingsService : ISettingsService
     {
         Account account;
+        LogerService logerService;
         public SettingsService()
         {
+            logerService = new V1LoggerService();
             account = new Account();
         }
         public void ChangePassword()
@@ -16,16 +19,16 @@ namespace AutomatedTellerMachineApp.Services
 
             while (!pinChanged && attempts < 3)
             {
-                Console.Write("Enter current PIN: ");
+                logerService.LogInformation("Enter current PIN: ");
                 string currentPin = Console.ReadLine();
 
                 if (currentPin != account.NewPin)
                 {
                     attempts++;
-                    Console.WriteLine("Incorrect current PIN. Try again.");
+                    logerService.LogInformation("Incorrect current PIN. Try again.");
                     if (attempts >= 3)
                     {
-                        Console.WriteLine("Too much effort. Try again later.");
+                        logerService.LogInformation("Too much effort. Try again later.");
                         return;
                     }
                 }
@@ -35,7 +38,7 @@ namespace AutomatedTellerMachineApp.Services
                     {
                         try
                         {
-                            Console.Write("Enter new PIN: ");
+                            logerService.LogInformation("Enter new PIN: ");
                             string newPin = Console.ReadLine();
 
                             if (newPin.Length != 4 || !int.TryParse(newPin, out _))
@@ -43,27 +46,27 @@ namespace AutomatedTellerMachineApp.Services
                                 throw new ArgumentOutOfRangeException("PIN must be a 4-digit number.");
                             }
 
-                            Console.Write("Re-enter new PIN: ");
+                            logerService.LogInformation("Re-enter new PIN: ");
                             string newPin2 = Console.ReadLine();
 
                             if (newPin != newPin2)
                             {
-                                Console.WriteLine("The PINs must be the same. Try again.");
+                                logerService.LogInformation("The PINs must be the same. Try again.");
                             }
                             else
                             {
                                 account.NewPin = newPin2;
-                                Console.WriteLine("PIN successfully changed.");
+                                logerService.LogInformation("PIN successfully changed.");
                                 pinChanged = true;
                             }
                         }
                         catch (ArgumentOutOfRangeException ex)
                         {
-                            Console.WriteLine($"{ex.Message} Try again!");
+                            logerService.LogInformation($"{ex.Message} Try again!");
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine($"{ex.Message} Try again!");
+                            logerService.LogInformation($"{ex.Message} Try again!");
                         }
                     }
                 }
@@ -77,7 +80,7 @@ namespace AutomatedTellerMachineApp.Services
             {
                 try
                 {
-                    Console.Write("Enter new phone number: ");
+                    logerService.LogInformation("Enter new phone number: ");
                     string newPhoneNumber = Console.ReadLine();
 
                     if (string.IsNullOrEmpty(newPhoneNumber))
@@ -88,12 +91,12 @@ namespace AutomatedTellerMachineApp.Services
                         throw new ArgumentException("Invalid phone number length.");
 
                     account.CurrentPhoneNumber = newPhoneNumber;
-                    Console.WriteLine("Phone number successfully changed to: " + newPhoneNumber);
+                    logerService.LogInformation("Phone number successfully changed to: " + newPhoneNumber);
                     phoneNumberChanged = true;
                 }
                 catch (ArgumentException ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    logerService.LogInformation(ex.Message);
                 }
             }
         }
